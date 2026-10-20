@@ -16,6 +16,12 @@ add_library(libSimplEx STATIC
 )
 endif()
 
+if (MSVC)
+target_compile_options(libSimplEx PRIVATE /W4 /WX)
+else()
+target_compile_options(libSimplEx PRIVATE -Werror)
+endif()
+
 target_include_directories(libSimplEx PUBLIC
    ${CMAKE_CURRENT_SOURCE_DIR}/../include
 )
